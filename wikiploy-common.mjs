@@ -11,7 +11,7 @@ export function addConfig(configs, site, isRelease = false) {
 		src: 'core.js',
 		dst: `${deploymentName}core.js`,
 		site,
-		nowiki: true,
+		nowiki: false,
 	}));
 	configs.push(new DeployConfig({
 		src: 'local.js',

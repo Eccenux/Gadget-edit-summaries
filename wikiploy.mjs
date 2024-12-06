@@ -1,4 +1,4 @@
-import { Wikiploy, setupSummary } from 'wikiploy';
+import { Wikiploy } from 'wikiploy';
 
 import * as botpass from './bot.config.mjs';
 const ployBot = new Wikiploy(botpass);
@@ -9,7 +9,10 @@ import { addConfig, addConfigRelease } from './wikiploy-common.mjs';
 // run asynchronously to be able to wait for results
 (async () => {
 	// custom summary from a prompt
-	await setupSummary(ployBot);
+	// await setupSummary(ployBot);
+	ployBot.summary = () => {
+		return `nowiki fix`;
+	};
 
 	// push out file(s) to wiki
 	const configs = [];
