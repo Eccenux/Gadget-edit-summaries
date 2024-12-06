@@ -4,7 +4,10 @@
  * loader: [[MediaWiki:Gadget-edit-summaries.js]]
  *   core: [[MediaWiki:Gadget-edit-summaries-core.js]]
  */
-mw.hook('userjs.przyciskiOpis.gotowe').add(function (przyciski, opisBtns) {
+// Uwaga! Do własnych przycisków używaj:
+// mw.hook('userjs.przyciskiOpis.gotowe').add(...)
+// składania jest taka sama, ale `_baza` jest tylko dla bazowych przycisków
+mw.hook('userjs.przyciskiOpis._baza').add(function (przyciski, opisBtns) {
 	// przyciski.zmiana({tekst:'tł.', zmiana:'tłumaczenie', dlugie:'Tłumaczenie'});
 	// przyciski.zmiana({tekst:'#Św2024', zmiana:'#ŚwiątecznaAkcjaEdycyjna2024', dlugie:'Zmiana w ramach akcji Święta2024'});
 	/*

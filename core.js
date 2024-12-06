@@ -2,9 +2,13 @@
 /* eslint-disable indent */
 
 /**
-Automatyczne opisy zmian
+Automatyczne opisy zmian.
 
-Autor pierwotny (Author): [[:pl:User:Adziura|Adam Dziura]]
+Definicje lokalnych przycisków:
+[[MediaWiki:Gadget-edit-summaries-local.js]]
+
+Autor pierwotny (Author):
+[[:pl:User:Adziura|Adam Dziura]]
 
 Poprawki i zmiany (Contributors):
 * [[:pl:User:Nux|Maciej Jaros]]
@@ -14,6 +18,7 @@ Poprawki i zmiany (Contributors):
 * [[:pl:User:Maire]]
 * [[:pl:User:Msz2001]]
 
+<nowiki>
 **/
 (function($) {
 
@@ -123,9 +128,8 @@ function initBtns(useVe)
 
 	//
 	// dodawanie przycisków
-	addBtns();
-
-	mw.hook('userjs.przyciskiOpis.gotowe').fire(przyciski, opisBtns);
+	mw.hook('userjs.przyciskiOpis._baza').fire(przyciski, opisBtns);	// private, avoid using this
+	mw.hook('userjs.przyciskiOpis.gotowe').fire(przyciski, opisBtns);	// custom buttons book
 }
 
 /**
@@ -223,3 +227,4 @@ window.przyciskiDodaj = przyciskiDodaj;
 window.dodajOpis = dodajOpis;
 
 })(jQuery);
+// </nowiki>
