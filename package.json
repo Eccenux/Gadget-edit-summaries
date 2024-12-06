@@ -1,0 +1,17 @@
+{
+	"name": "wiki-edit-summaries",
+	"type": "commonjs",
+	"scripts": {
+		"test": "mocha",
+		"build-dev": "gulp buildDev",
+		"build": "gulp build",
+		"deploy-dev": "node wikiploy-dev.mjs",
+		"deploy": "node wikiploy.mjs",
+		"rollout-dev": "npm run build-dev && npm run deploy-dev",
+		"rollout": "npm run build && npm run deploy"
+	},
+	"devDependencies": {
+		"eslint": "8.x",
+		"mocha": "10.x"
+	}
+}
