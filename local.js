@@ -7,88 +7,97 @@
 mw.hook('userjs.przyciskiOpis.gotowe').add(function (przyciski, opisBtns) {
 	// przyciski.zmiana({tekst:'tł.', zmiana:'tłumaczenie', dlugie:'Tłumaczenie'});
 	// przyciski.zmiana({tekst:'#Św2024', zmiana:'#ŚwiątecznaAkcjaEdycyjna2024', dlugie:'Zmiana w ramach akcji Święta2024'});
+	/*
+	// konwersja: stare na nowe
+	przyciskiDodaj\(opisBtns, '([^']+)', 'dodajOpis\("\1"\)', kl,\s*[\r\n]+\s*'([^']+)'
+	przyciski.zmiana({tekst:'$1',\n\t\tdlugie:'$2'}
+
+	przyciskiDodaj\(opisBtns, '([^']+)', 'dodajOpis\("([^"]+)"\)', kl,\s*[\r\n]+\s*'([^']+)'
+	przyciski.zmiana({tekst:'$1', zmiana:'$2',\n\t\tdlugie:'$3'}
+	*/
+
 	var kl = '';	// klasa jest niepotrzebna (wszystkie <a> w #userSummaryButtons ustawione poprzez CSS)
 
 	// drobne różne
-	przyciskiDodaj(opisBtns, 'ort.', 'dodajOpis("ort.")', kl,
-		'Poprawiono błąd ortograficzny');
-	przyciskiDodaj(opisBtns, 'lit.', 'dodajOpis("lit.")', kl,
-		'Poprawiono literówkę');
-	przyciskiDodaj(opisBtns, 'int.', 'dodajOpis("int.")', kl,
-		'Poprawiono interpunkcję');
-	przyciskiDodaj(opisBtns, 'jęz.', 'dodajOpis("jęz.")', kl,
-		'Poprawiono błędy językowe');
-	przyciskiDodaj(opisBtns, 'akt.', 'dodajOpis("aktualizacja")', kl,
-		'Zaktualizowano');
+	przyciski.zmiana({tekst:'ort.',
+		dlugie:'Poprawiono błąd ortograficzny'});
+	przyciski.zmiana({tekst:'lit.',
+		dlugie:'Poprawiono literówkę'});
+	przyciski.zmiana({tekst:'int.',
+		dlugie:'Poprawiono interpunkcję'});
+	przyciski.zmiana({tekst:'jęz.',
+		dlugie:'Poprawiono błędy językowe'});
+	przyciski.zmiana({tekst:'akt.', zmiana:'aktualizacja',
+		dlugie:'Zaktualizowano'});
 
 	// opisBtns.appendChild(document.createTextNode(' ')); // odstęp
 
 	// drobne około wikizacyjne
-	przyciskiDodaj(opisBtns, 'linki-zew', 'dodajOpis("linki zewnętrzne")', kl,
-		'Poprawiono/dodano linki zewnętrzne');
-	przyciskiDodaj(opisBtns, 'linki-popr', 'dodajOpis("poprawa linków")', kl,
-		'Poprawiono linki zewnętrzne/wewnętrzne');
-	przyciskiDodaj(opisBtns, 'kat.', 'dodajOpis("kat.")', kl,
-		'Poprawiono/dodano kategorię');
-	przyciskiDodaj(opisBtns, 'wikizacja', 'dodajOpis("[[Pomoc:Słowniczek#W|wikizacja]]")', kl,
-		'Wikizacja artykułu (dodanie linków wewnętrznych, podział na sekcje itp.)');
-	przyciskiDodaj(opisBtns, 'przypisy', 'dodajOpis("źródła/przypisy")', kl,
-		'Dodanie/poprawienie przypisów lub źródeł');
+	przyciski.zmiana({tekst:'linki-zew', zmiana:'linki zewnętrzne',
+		dlugie:'Poprawiono/dodano linki zewnętrzne'});
+	przyciski.zmiana({tekst:'linki-popr', zmiana:'poprawa linków',
+		dlugie:'Poprawiono linki zewnętrzne/wewnętrzne'});
+	przyciski.zmiana({tekst:'kat.',
+		dlugie:'Poprawiono/dodano kategorię'});
+	przyciski.zmiana({tekst:'wikizacja', zmiana:'[[Pomoc:Słowniczek#W|wikizacja]]',
+		dlugie:'Wikizacja artykułu (dodanie linków wewnętrznych, podział na sekcje itp.)'});
+	przyciski.zmiana({tekst:'przypisy', zmiana:'źródła/przypisy',
+		dlugie:'Dodanie/poprawienie przypisów lub źródeł'});
 
 	opisBtns.appendChild(document.createTextNode(' ')); // odstęp
 
 	// drobne około techniczne
-	przyciskiDodaj(opisBtns, 'ujedn.', 'dodajOpis("ujednoznacznienie")', kl,
-		'Poprawiono/dodano stronę ujednoznaczniającą');
-	przyciskiDodaj(opisBtns, 'ilustr.', 'dodajOpis("ilustracja")', kl,
-		'Poprawiono/dodano ilustrację');
-	przyciskiDodaj(opisBtns, 'szablon', 'dodajOpis("szablon")', kl,
-		'Poprawiono/dodano szablon');
-	przyciskiDodaj(opisBtns, 'infobox', 'dodajOpis("infobox")', kl,
-		'Poprawiono/uzupełniono/dodano infobox');
+	przyciski.zmiana({tekst:'ujedn.', zmiana:'ujednoznacznienie',
+		dlugie:'Poprawiono/dodano stronę ujednoznaczniającą'});
+	przyciski.zmiana({tekst:'ilustr.', zmiana:'ilustracja',
+		dlugie:'Poprawiono/dodano ilustrację'});
+	przyciski.zmiana({tekst:'szablon',
+		dlugie:'Poprawiono/dodano szablon'});
+	przyciski.zmiana({tekst:'infobox',
+		dlugie:'Poprawiono/uzupełniono/dodano infobox'});
 
 	if(isVe !== true)
 		opisBtns.appendChild(document.createElement('br'));
 
 	// drobne inne
-	przyciskiDodaj(opisBtns, 'dr. meryt.', 'dodajOpis("drobne merytoryczne")', kl,
-		'Drobne zmiany merytoryczne');
-	przyciskiDodaj(opisBtns, 'dr. red.', 'dodajOpis("drobne redakcyjne")', kl,
-		'Drobne zmiany redakcyjne');
-	przyciskiDodaj(opisBtns, 'dr. tech.', 'dodajOpis("drobne techniczne")', kl,
-		'Drobne zmiany techniczne');
+	przyciski.zmiana({tekst:'dr. meryt.', zmiana:'drobne merytoryczne',
+		dlugie:'Drobne zmiany merytoryczne'});
+	przyciski.zmiana({tekst:'dr. red.', zmiana:'drobne redakcyjne',
+		dlugie:'Drobne zmiany redakcyjne'});
+	przyciski.zmiana({tekst:'dr. tech.', zmiana:'drobne techniczne',
+		dlugie:'Drobne zmiany techniczne'});
 
 	opisBtns.appendChild(document.createTextNode(' ')); // odstęp
 
 	// do użytkownika i około administracyjne
-	przyciskiDodaj(opisBtns, 'test', 'dodajOpis("test")', kl,
-		'Dodano ostrzeżenie dla użytkownika');
+	przyciski.zmiana({tekst:'test',
+		dlugie:'Dodano ostrzeżenie dla użytkownika'});
 
-	przyciskiDodaj(opisBtns, 'npa', 'dodajOpis("[[WP:NPA|NPA]]")', kl,
-		'Zgłoszono artykuł jako podejrzany o naruszenie praw autorskich');
-	przyciskiDodaj(opisBtns, 'wer', 'dodajOpis("[[WP:WER|Potrzebne źródło]]")', kl,
-		'Potrzebne wiarygodne źródło');
-	przyciskiDodaj(opisBtns, 'dnu', 'dodajOpis("[[Wikipedia:Poczekalnia|Poczekalnia DNU]]")', kl,
-		'Zgłoszono artykuł do usunięcia');
-	przyciskiDodaj(opisBtns, 'ek', 'dodajOpis("[[:Kategoria:Ekspresowe kasowanie|ek]]")', kl,
-		'Zgłoszono artykuł do ekspresowego (s)kasowania');
-	przyciskiDodaj(opisBtns, 'rew.', 'dodajOpis("przywrócenie poprzedniej wersji")', kl,
-		'przywrócenie poprzedniej wersji');
+	przyciski.zmiana({tekst:'npa', zmiana:'[[WP:NPA|NPA]]',
+		dlugie:'Zgłoszono artykuł jako podejrzany o naruszenie praw autorskich'});
+	przyciski.zmiana({tekst:'wer', zmiana:'[[WP:WER|Potrzebne źródło]]',
+		dlugie:'Potrzebne wiarygodne źródło'});
+	przyciski.zmiana({tekst:'dnu', zmiana:'[[Wikipedia:Poczekalnia|Poczekalnia DNU]]',
+		dlugie:'Zgłoszono artykuł do usunięcia'});
+	przyciski.zmiana({tekst:'ek', zmiana:'[[:Kategoria:Ekspresowe kasowanie|ek]]',
+		dlugie:'Zgłoszono artykuł do ekspresowego (s)kasowania'});
+	przyciski.zmiana({tekst:'rew.', zmiana:'przywrócenie poprzedniej wersji',
+		dlugie:'przywrócenie poprzedniej wersji'});
 
 	opisBtns.appendChild(document.createTextNode(' ')); // odstęp
 
 	// insze do dyskusji i głosowań
-	przyciskiDodaj(opisBtns, 'głos', 'dodajOpis("głos")', kl,
-		'Oddano głos');
-	przyciskiDodaj(opisBtns, 'komentarz', 'dodajOpis("komentarz")', kl,
-		'Dodano komentarz w dyskusji lub do głosu');
+	przyciski.zmiana({tekst:'głos',
+		dlugie:'Oddano głos'});
+	przyciski.zmiana({tekst:'komentarz',
+		dlugie:'Dodano komentarz w dyskusji lub do głosu'});
 
-	przyciskiDodaj(opisBtns, 'pytanie', 'dodajOpis("pytanie")', kl,
-		'Zadano pytanie w dyskusji');
-	przyciskiDodaj(opisBtns, 'odp.', 'dodajOpis("odpowiedź")', kl,
-		'Dodano odpowiedź w dyskusji');
-	przyciskiDodaj(opisBtns, 'spr.', 'dodajOpis("sprawdzone")', kl,
-		'Sprawdzono artykuł');
+	przyciski.zmiana({tekst:'pytanie',
+		dlugie:'Zadano pytanie w dyskusji'});
+	przyciski.zmiana({tekst:'odp.', zmiana:'odpowiedź',
+		dlugie:'Dodano odpowiedź w dyskusji'});
+	przyciski.zmiana({tekst:'spr.', zmiana:'sprawdzone',
+		dlugie:'Sprawdzono artykuł'});
 
 	// odstęp przed własnymi
 	opisBtns.appendChild(document.createTextNode(' ')); // odstęp
@@ -100,8 +109,8 @@ mw.hook('userjs.przyciskiOpis.gotowe').add(function (przyciski, opisBtns) {
 		if (dt.getMonth()+1 == 12) {
 			let year = dt.getFullYear();
 			let yy = year.toString().substr(-2);
-			przyciskiDodaj(opisBtns, `św'${yy}`, `dodajOpis("#ŚwiątecznaAkcjaEdycyjna${year}")`, kl,
-				`Świąteczna Akcja ${year}`);
+			przyciski.zmiana({tekst:`św'${yy}`, zmiana:`#ŚwiątecznaAkcjaEdycyjna${year}`,
+				dlugie:`Świąteczna Akcja ${year}`});
 		}
 	}
 });
