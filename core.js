@@ -128,8 +128,8 @@ function initBtns(useVe)
 
 	//
 	// dodawanie przycisków
-	mw.hook('userjs.przyciskiOpis._baza').fire(przyciski, opisBtns);	// private, avoid using this
-	mw.hook('userjs.przyciskiOpis.gotowe').fire(przyciski, opisBtns);	// custom buttons book
+	mw.hook('userjs.przyciskiOpis._baza').fire(przyciski, opisBtns, isVe);	// private, avoid using this
+	mw.hook('userjs.przyciskiOpis.gotowe').fire(przyciski, opisBtns, isVe);	// custom buttons book
 }
 
 /**
