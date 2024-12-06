@@ -104,6 +104,7 @@ mw.hook('userjs.przyciskiOpis._baza').add(function (przyciski, opisBtns, isVe) {
 	
 	// czasowe, dla nie-świeżynek
 	if (mw.config.get('wgUserGroups').includes('autoconfirmed')){
+		let dodane = false;
 		const dt = new Date();
 		// grudzień
 		if (dt.getMonth()+1 == 12) {
@@ -111,6 +112,10 @@ mw.hook('userjs.przyciskiOpis._baza').add(function (przyciski, opisBtns, isVe) {
 			let yy = year.toString().substr(-2);
 			przyciski.zmiana({tekst:`św'${yy}`, zmiana:`#ŚwiątecznaAkcjaEdycyjna${year}`,
 				dlugie:`Świąteczna Akcja ${year}`});
+			dodane = true;
+		}
+		if (dodane) {
+			opisBtns.appendChild(document.createTextNode(' ')); // odstęp
 		}
 	}
 });
