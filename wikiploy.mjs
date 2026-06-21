@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Wikiploy } from 'wikiploy';
 
 import * as botpass from './bot.config.mjs';
@@ -6,12 +7,14 @@ const ployBot = new Wikiploy(botpass);
 // common deploy function(s)
 import { addConfig, addConfigRelease } from './wikiploy-common.mjs';
 
+var nop = 1; // ignore
+
 // run asynchronously to be able to wait for results
 (async () => {
 	// custom summary from a prompt
 	// await setupSummary(ployBot);
 	ployBot.summary = () => {
-		return `edyton off`;
+		return `fix VE loading`;
 	};
 
 	// push out file(s) to wiki

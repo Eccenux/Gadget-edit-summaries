@@ -90,10 +90,16 @@ function initBtns(useVe)
 		opisBtns.style.cssText = 'border: solid 1px #ccc; border-top: none; border-bottom: 0; display: block; overflow: hidden; z-index: 1; padding: 0.25em 0.5em;';
 		isVe = true;
 		// evil…
-		var realInitialize = ve.ui.MWSaveDialog.prototype.initialize;
+		let realInitialize = ve.ui.MWSaveDialog.prototype.initialize;
+		if (typeof realInitialize !== 'function') {
+			console.error('[edit-summaries]', 'MWSaveDialog init hook failed');
+			return;
+		}
+		// console.debug('[edit-summaries]', 'MWSaveDialog init function:', realInitialize);
 		ve.ui.MWSaveDialog.prototype.initialize = function () {
 			realInitialize.call( this );
 			this.editSummaryInput.$element.after( opisBtns );
+			// console.debug('[edit-summaries]', 'editSummaryInput', this.editSummaryInput);
 		};
 	} else {
 		var el_label = document.getElementById('wpSummaryLabel');
@@ -196,14 +202,25 @@ if (editActions.indexOf(mw.config.get('wgAction')) >= 0)
 
 // broken on mobile, desktop only
 if (mw.config.get('skin') !== 'minerva') {
-mw.loader.using( 'ext.visualEditor.desktopArticleTarget.init' ).done( function () {
-	mw.libs.ve.addPlugin( function () {
-		return mw.loader.using( 'ext.visualEditor.mwcore' )
-			.done( function () {
-				initBtns(true);
-			} );
+	let initVeDone = false;
+	// old way:
+	// mw.loader.using( 'ext.visualEditor.desktopArticleTarget.init' ).done( function () {
+		// mw.libs.ve.addPlugin( function () {
+
+	// VE docs: https://www.mediawiki.org/wiki/VisualEditor/Gadgets/Add_a_tool#Create_and_register_tool
+	mw.hook( 've.loadModules' ).add( function( addPlugin ) {
+		if (initVeDone) return;
+		// console.debug('[edit-summaries]', 've.loadModules; addPlugin', addPlugin);
+		addPlugin( function () {
+			return mw.loader.using( 'ext.visualEditor.mwcore' )
+				.done( function () {
+					if (initVeDone) return;
+					// console.debug('[edit-summaries]', 'ext.visualEditor.mwcore');
+					initBtns(true);
+					initVeDone = true;
+				} );
+		} );
 	} );
-} );
 }
 
 //
