@@ -1,4 +1,4 @@
-/* global mw */
+/* eslint-disable no-unused-vars */
 /**
  * Lokalne przyciski opisu zmian.
  * 
