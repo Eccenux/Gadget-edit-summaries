@@ -106,14 +106,24 @@ mw.hook('userjs.przyciskiOpis._baza').add(function (przyciski, opisBtns, isVe) {
 	if (mw.config.get('wgUserGroups').includes('autoconfirmed')){
 		let dodane = false;
 		const dt = new Date();
+		const monthNo = dt.getMonth()+1;
+		const dayMonth = dt.getDate();
+		
 		// grudzień
-		if (dt.getMonth()+1 == 12) {
+		if (monthNo == 12) {
 			let year = dt.getFullYear();
 			let yy = year.toString().substr(-2);
 			przyciski.zmiana({tekst:`św'${yy}`, zmiana:`#ŚwiątecznaAkcjaEdycyjna${year}`,
 				dlugie:`Świąteczna Akcja ${year}`});
 			dodane = true;
 		}
+		// // edyton
+		// if (monthNo == 10 && dayMonth == 4) {
+		// 	przyciski.zmiana({tekst:`⚒ kop. wiedzy`, zmiana:`#KopalniaWiedzy`,
+		// 		dlugie:`Kopalnia Wiedzy 2025`});
+		// 	dodane = true;
+		// }
+			
 		if (dodane) {
 			opisBtns.appendChild(document.createTextNode(' ')); // odstęp
 		}

@@ -1,4 +1,4 @@
-/* global ve, mw, jQuery */
+/* global ve, jQuery */
 /* eslint-disable indent */
 
 /**

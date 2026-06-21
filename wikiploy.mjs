@@ -11,7 +11,7 @@ import { addConfig, addConfigRelease } from './wikiploy-common.mjs';
 	// custom summary from a prompt
 	// await setupSummary(ployBot);
 	ployBot.summary = () => {
-		return `odstęp od tymczasówek`;
+		return `edyton off`;
 	};
 
 	// push out file(s) to wiki
