@@ -22,8 +22,8 @@ Poprawki i zmiany (Contributors):
 **/
 (function($) {
 
-var isVe = false;
-var opisBtns = null;
+let isVe = false;
+let opisBtns = null;
 
 /** Funkcje pomocnicze do dodawania przycisków. */
 var przyciski = {
@@ -173,7 +173,9 @@ function przyciskiDodaj(elUserBtns, pTekst, pAkcja, pKlasa, pOpis)
  */
 function dodajOpis(opis)
 {
-	var wpS = (isVe) ? document.querySelector( '.ve-ui-mwSaveDialog-summary textarea' ) : document.getElementById('wpSummary');
+	let wpS = null;
+	if (isVe) wpS = document.querySelector('.ve-ui-mwSaveDialog-summary textarea');
+	if (!wpS) wpS = document.getElementById('wpSummary');
 	
 	if (wpS.value.indexOf(opis) == -1)
 	{
@@ -196,7 +198,7 @@ if (editActions.indexOf(mw.config.get('wgAction')) >= 0)
 {
 	if (mw.config.get('wgNamespaceNumber') > -1)
 	{
-		jQuery(document).ready(initBtns);
+		$(()=>{initBtns()});
 	}
 }
 
