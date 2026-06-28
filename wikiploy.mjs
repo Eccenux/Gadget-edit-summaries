@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Wikiploy } from 'wikiploy';
+import { setupSummary, Wikiploy } from 'wikiploy';
 
 import * as botpass from './bot.config.mjs';
 const ployBot = new Wikiploy(botpass);
@@ -12,10 +12,10 @@ var nop = 1; // ignore
 // run asynchronously to be able to wait for results
 (async () => {
 	// custom summary from a prompt
-	// await setupSummary(ployBot);
-	ployBot.summary = () => {
-		return `fix VE loading`;
-	};
+	await setupSummary(ployBot);
+	// ployBot.summary = () => {
+	// 	return `fix VE loading`;
+	// };
 
 	// push out file(s) to wiki
 	const configs = [];

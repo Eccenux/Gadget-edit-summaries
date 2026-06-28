@@ -173,7 +173,7 @@ function przyciskiDodaj(elUserBtns, pTekst, pAkcja, pKlasa, pOpis)
  */
 function dodajOpis(opis)
 {
-	var wpS = (isVe) ? $( '.ve-ui-mwSaveDialog-summary textarea' )[0] : wpS = document.editform.wpSummary;
+	var wpS = (isVe) ? document.querySelector( '.ve-ui-mwSaveDialog-summary textarea' ) : document.getElementById('wpSummary');
 	
 	if (wpS.value.indexOf(opis) == -1)
 	{

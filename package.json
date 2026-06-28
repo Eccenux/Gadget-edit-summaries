@@ -3,7 +3,7 @@
 	"type": "commonjs",
 	"scripts": {
 		"deploy": "node wikiploy.mjs",
-		"rollout": "npm run build && npm run deploy"
+		"lint": "npx eslint"
 	},
 	"devDependencies": {
 		"eslint": "8.x",
